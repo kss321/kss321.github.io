@@ -25,40 +25,6 @@
         - AWS의 이메일 서비스
         - SES를 이용하면 따로 이메일 서버를 세울 필요가 없음
         - 간단하여 이용 용이
-    7. EC2(Elastic Compute Cloud)
-        - AWS에서 가장 중요한 서비스
-        - 컴퓨터를 임대한다는 개념
-        - 실제 컴퓨터를 통해 수행하는 작업들을 EC2를 통해 할 수 있음
-        - 클릭 몇번으로 컴퓨터 한대를 설치할 수 있는것과 같음
-        - 즉, 컴퓨터의 생성 및 삭제가 쉬움
-        - 선호하는 OS, 웹서비스, 프로그램을 설치하면 됨
-        - EC2를 통해 하는 가장 기본적인 업무는 웹서버 설치, 웹서버를 통해서 클라이언트가 브라우저를 통해서 요청하는 웹페이지, 이미지 등을 제공하는 것
-        - 물리적으로 존재하는 것이 아니라, 인프라(데이터센터)에 만들어진 것이기 때문에 인터넷(네트워크)을 통해 제어함
-        - 가상 컴퓨터를 사용할때 설치한 프로그램, 파일, 설정 등을 그대로 저장가능하며, 이를 이미지라고 함 -> 이 이미지가 AMI(Amazon Machine Image)
-        - 가상 컴퓨터를 생성할때마다 반복적으로 설치하는 작업이 불필요
-        1. 인스턴스
-            - 가상 컴퓨팅 환경
-            - 클라우드의 가상 서버
-            - 1대의 컴퓨터를 의미하는 단위
-        2. AMI
-            - 아마존 머신 이미지
-            - 소프트웨어 구성이 기재되어 있는 템플릿
-            - 운영체제, 어플리케이션 서버, 어플리케이션 등등
-            - 하나의 AMI로 여러 인스턴스를 실행할 수 있음
-            - 서버에 필요한 운영체제와 여러 소프트웨어들이 적절히 구성된 상태로 제공되는 템플릿으로 인스턴스를 쉽게 만들 수 있음
-        3. Auto Scaling
-            - EC2 인스턴스를 자동으로 생성하고 삭제해주는 서비스
-            - 사용 목적 : 어플리케이션의 로드(부하)를 처리할 수 있는 정확한 수의 EC2 인스턴스를 보유하도록 보장함
-            - 어플리케이션의 늘어나거나 줄어드는 수요에 따라 인스턴스를 시작하거나 종료할 수 있음
-            - Auto Scaling Group에 최소, 최대 인스턴스수 지정 가능 
-              Auto Scaling을 해도 그룹의 최대 인스턴스수를 넘지 않음
-            - 모든 EC2 인스턴스가 Auto Scaling 그룹에 포함되는 것은 아님            
-            - Auto Scaling을 하기 위해서는 자동으로 생성할 인스턴스를 만들어주어야 함
-              인스턴스를 생성한 수에 필요한 소프트웨어 등을 설치하고 이를 이미지로 만들어 놓으면 Auto Scaling이 동작할 때 이 이미지를 인스턴스로 생성하게 됨
-            - Auto Scaling 수명주기
-                - Auto Scaling Group의 EC2 인스턴스는 다른 EC2 인스턴스와 달리 수명주기를 가짐
-                - 수명주기 시작 : Auto Scaling Group이 인스턴스를 시작하고 서비스에 들어갈 때
-                - 수명주기 종료 : 인스턴스를 종료하거나, Auto Scaling Group이 인스턴스를 서비스에서 제외시키고 이를 종료할 때 끝      
 3. VPC        
     1. Amazon Virtual Private Cloud
         - AWS 클라우드에서 논리적으로 격리된 공간을 프로비저닝하여 고객이 정의하는 가상 네트워크에서 AWS 리소스를 시작할 수 있음
@@ -73,7 +39,45 @@
         2. Private Subnet
             - 외부에서 접속해서 보면 안되는 중요한 정보들
             - 예 : FO(APP), Redis, Index, ElasticSearch, DataBase
-            
+    3. EC2(Elastic Compute Cloud)
+        - AWS에서 가장 중요한 서비스
+        - 컴퓨터를 임대한다는 개념
+        - 실제 컴퓨터를 통해 수행하는 작업들을 EC2를 통해 할 수 있음
+        - 클릭 몇번으로 컴퓨터 한대를 설치할 수 있는것과 같음
+        - 즉, 컴퓨터의 생성 및 삭제가 쉬움
+        - 선호하는 OS, 웹서비스, 프로그램을 설치하면 됨
+        - EC2를 통해 하는 가장 기본적인 업무는 웹서버 설치, 웹서버를 통해서 클라이언트가 브라우저를 통해서 요청하는 웹페이지, 이미지 등을 제공하는 것
+        - 물리적으로 존재하는 것이 아니라, 인프라(데이터센터)에 만들어진 것이기 때문에 인터넷(네트워크)을 통해 제어함
+        - 가상 컴퓨터를 사용할때 설치한 프로그램, 파일, 설정 등을 그대로 저장가능하며, 이를 이미지라고 함 -> 이 이미지가 AMI(Amazon Machine Image)
+        - 가상 컴퓨터를 생성할때마다 반복적으로 설치하는 작업이 불필요
+        1. 인스턴스
+            - 가상 컴퓨팅 환경
+            - 클라우드의 가상 서버
+            - 1대의 컴퓨터를 의미하는 단위
+            - 인스턴스 하나에 웹서버, mod_jk, 어플리케이션 서버가 하나씩 들어있음
+        2. AMI
+            - 아마존 머신 이미지
+            - 소프트웨어 구성이 기재되어 있는 템플릿
+            - 운영체제, 어플리케이션 서버, 어플리케이션 등등
+            - 하나의 AMI로 여러 인스턴스를 실행할 수 있음
+            - 서버에 필요한 운영체제와 여러 소프트웨어들이 적절히 구성된 상태로 제공되는 템플릿으로 인스턴스를 쉽게 만들 수 있음
+        3. Auto Scaling Group(ASG)
+            - EC2 인스턴스를 자동으로 생성하고 삭제해주는 서비스
+            - 사용 목적 : 어플리케이션의 로드(부하)를 처리할 수 있는 정확한 수의 EC2 인스턴스를 보유하도록 보장함
+            - 어플리케이션의 늘어나거나 줄어드는 수요에 따라 인스턴스를 시작하거나 종료할 수 있음
+            - Auto Scaling Group에 최소, 최대 인스턴스수 지정 가능 
+              Auto Scaling을 해도 그룹의 최대 인스턴스수를 넘지 않음
+            - 모든 EC2 인스턴스가 Auto Scaling 그룹에 포함되는 것은 아님            
+            - Auto Scaling을 하기 위해서는 자동으로 생성할 인스턴스를 만들어주어야 함
+              인스턴스를 생성한 수에 필요한 소프트웨어 등을 설치하고 이를 이미지로 만들어 놓으면 Auto Scaling이 동작할 때 이 이미지를 인스턴스로 생성하게 됨
+            - Auto Scaling 수명주기
+                - Auto Scaling Group의 EC2 인스턴스는 다른 EC2 인스턴스와 달리 수명주기를 가짐
+                - 수명주기 시작 : Auto Scaling Group이 인스턴스를 시작하고 서비스에 들어갈 때
+                - 수명주기 종료 : 인스턴스를 종료하거나, Auto Scaling Group이 인스턴스를 서비스에서 제외시키고 이를 종료할 때 끝      
+        4. ALB
+            - Application Load Balancer
+            - EC2 인스턴스 같은 여러 대상에 수신 어플리케이션 트래픽을 분산시킴
+            - 어플리케이션의 가용성이 향상됨        
 4. Redis
     1. Session
         - 예를들어 프론트 웹서버가 여러대일 경우 한곳에만 세션 정보를 저장하면 한쪽이 멈춘경우, 세션의 지속이 불가능한데, 
@@ -103,7 +107,8 @@
 * 출처
 - https://docs.aws.amazon.com/ko_kr/vpc/latest/userguide/what-is-amazon-vpc.html
 - https://www.44bits.io/ko/post/understanding_aws_vpc
-
+- ALB : https://docs.aws.amazon.com/ko_kr/elasticloadbalancing/latest/application/introduction.html
+- ALB : https://docs.aws.amazon.com/ko_kr/elasticloadbalancing/latest/application/application-load-balancers.html
     
 -----------------------------------------------------------------------------------------------------------------------
 ###### 접속경로
@@ -123,7 +128,7 @@
 1. Web 어플리케이션 구성
     - 웹서버               -> Apache
     - 데이터베이스 서버    -> Postgre
-    - 어플리케이션 서버    -> G1
+    - 어플리케이션 서버    
     - 웹클라이언트(웹브라우저) <--HTTP--> 웹서버(Apache) <--AJP(mod_jk)--> AP서버(Tomcat) <-> DB서버(DBMS : PostgreSQL)
     - FO(Web), FO(API), BO(Web, APP), Batch서버는 모두 각각의 웹서버(Apache), AP서버(Tomcat)을 가짐
 
@@ -161,30 +166,45 @@
         - 설정이 어려우며
         - 톰캣에 한정된다는 것이 단점임
 
-5. 로드밸런스
+5. 로드밸런서
     1. 정의
         - 부하분산
         - 둘 혹은 셋 이상의 중앙처리장치 혹은 저장장치와 같은 컴퓨터 자원들에게 작업을 나누는 것을 의미
         - 가용성 및 응답시간을 최적화
         - 클라이언트와 서버사이에 위치하여 한대의 서버로 부하기 집중되지 않도록 트래픽을 관리하여 최적의 퍼포먼스를 보여줌
-    2. Scale-Up과 Scale-Out
-        1. Scale-Up
-            - 서버 자체의 성능을 확장
-            - CPU i3를 i7으로 확장하는 것과 비슷
-        2. Scale-Out
-            - 기존 서버와 동일하거나 비슷한 성능의 서버의 대수를 늘리는 것
-            - CPU i3를 기존 1대에서 4대로 늘리는 것
-
-
-
+    2. 역할
+        1.부하분산
+            1. Scale-Out/Scale-in
+                1. Scale-Out
+                    - 기존 서버와 동일하거나 비슷한 성능의 서버의 대수를 늘리는 것
+                    - CPU i3를 기존 1대에서 4대로 늘리는 것
+                2. Scale-in
+                    - 서버 대수 줄임
+            2. Scale-up/Scale-down
+                1. Scale-Up
+                    - 서버 자체의 성능을 확장
+                    - CPU i3를 i7으로 확장하는 것과 비슷
+                2. Scale-down
+                    - 성능 줄이는 것        
+        2. SSL(암호화/복호화)
+    3. 스케줄링 방식
+        1. Round Robin
+            - 단순히 순서에따라 돌아가며 분배
+        2. Least Connections
+            - 연결 개수가 가장 적은 서버에 분배
+            - 트래픽으로 세션이 길어지는 경우 권장
+        3. Source    
+            - 사용자의 IP를 Hashing하여 분배
+            - 사용자가 항상 같은 서버로 연결되는 것이 보장됨
 
 * 출처
-- 서버 https://qiita.com/tamago3keran/items/f470593926458b7ef52a
+- 서버 : https://qiita.com/tamago3keran/items/f470593926458b7ef52a
 - https://jeong-pro.tistory.com/84
 - https://www.lesstif.com/pages/viewpage.action?pageId=12943367
-- 로드밸런스 https://post.naver.com/viewer/postView.nhn?volumeNo=27046347&memberNo=2521903
-- EC2 https://codingmania.tistory.com/15
-- EC2 https://docs.aws.amazon.com/ko_kr/AWSEC2/latest/UserGuide/concepts.html
+- 로드밸런스 : https://post.naver.com/viewer/postView.nhn?volumeNo=27046347&memberNo=2521903
+- 로드밸런스 스케줄링 방식 : https://nesoy.github.io/articles/2018-06/Load-Balancer
+- EC2 : https://codingmania.tistory.com/15
+- EC2 : https://docs.aws.amazon.com/ko_kr/AWSEC2/latest/UserGuide/concepts.html
 
 -----------------------------------------------------------------------------------------------------------------------
 ###### CI
@@ -218,5 +238,38 @@
     
     5. 라이브러리 관리
         - Nexus    
+        
+    6. Docker
+        - 리눅스의 응용프로그램들을 소프트웨어 컨테이너 안에 배치시키는 일을 자동화하는 오픈소스 프로젝트
 
------------------------------------------------------------------------------------------------------------------------        
+
+*출처
+- 도커 https://subicura.com/2017/01/19/docker-guide-for-beginners-1.html
+
+
+-----------------------------------------------------------------------------------------------------------------------
+###### OS
+1. OS
+    1. 정의
+        - Operating System
+        - 운영체제
+    2. 종류
+        1. Window
+            - MS개발
+            - 마우스로 클릭이 가능한 그래픽 유저 인터페이스 지원
+            - 편의성이 탁월하여 전세계 90%가 사용
+        2. Unix
+            - 미국 벨연구소 개발
+            - 다중 사용자/ 다중 태스크 실행 지원
+            - 대화형 운영체제
+            - 전산용으로 적합
+        3. Linux
+            - Unix기반의 공개용 OS
+            - 무료
+            - 종류
+                - redhat계열 -> 페도라, 센토스
+                - 데비안 계열 -> 우분투(Ubuntu)
+  
+                
+*출처
+- https://coding-factory.tistory.com/318
