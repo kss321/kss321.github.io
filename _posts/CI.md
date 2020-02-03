@@ -20,7 +20,7 @@
     - 인스턴스 기동시 자동기동설정(젠킨스의 경우)
     - 권한 설정
     - chkconfig 설정
-    
+    - Tomcat Log Rotate
 4. Docker
 5. Nexus
 6. Jenkins
