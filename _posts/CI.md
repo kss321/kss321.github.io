@@ -21,21 +21,14 @@
     - 권한 설정
     - chkconfig 설정
     - Tomcat Log Rotate
+    
 4. Docker
+
 5. Nexus
+
 6. Jenkins
+
 7. SonarQube
+
 8. GitLab
 
-* RPM/YUM
-- RPM
-    - Redhat Package Manager
-    - 프로그램 설치 후 바로 실행
-    - 확장자명 *.rpm
-    - 패키지 인스톨을 하기 위해선 그 패키지의 필요요소 전부를 따로 다운해야함(의존성)
-    - 리눅스에서만 쓸 수 있는 패키지 인스톨
-- YUM
-    - Yellodog Updater Modified
-    - rpm의 패키지 의존성 문제를 해결
-    - 인터넷을 통해서 필요한 파일을 저장소에서 자동으로 모두 다운로드하여 설치하는 방식
-    - 따라서, 외부 레포지토리 서버와 통신이 가능해야 함
