@@ -27,9 +27,14 @@
 1. 컴퓨팅
     1. EC2
         1. 정의
-            - Amazon Elastic Compute Cloud(
+            - Amazon Elastic Compute Cloud
         2. 기능
             - 인스턴스
+                - 기본이 아닌 VPC에서 시작한 인스턴스에는 프라이빗 IPv4 주소가 있음
+                  해당하는 서브넷의 퍼블릭 IP 주소 속성을 수정하지 않으면 퍼블릭 IPv4 주소는 없음
+                  
+                ![ex_screenshot](./img/default-vpc-diagram.png)  
+               
             - AMI
             - 
 2. 스토리지
@@ -59,6 +64,23 @@
     2. Cloud Front
     3. Route 53
     4. VPC
+        1. VPC 개념
+            - Amazon Virtual Private Cloud
+            - EC2의 네트워크 계층
+            - AWS 계정 전용 가상 네트워크
+            - 계정당 기본 VPC가 제공됨
+            1. 서브넷
+                - VPC의 IP주소 범위
+                - 퍼블릭 서브넷 : 인터넷에 연결되어야 하는 리소스
+                  프라이빗 서브넷 : 인터넷에 연결되지 않는 리소스
+                - 기본 VPC의 기본 서브넷은 퍼블릭 서브넷
+            2. 라우팅 테이블
+                - 네트워크 트래픽을 전달할 위치를 결정하는데 사용되는 라우팅이라는 규칙 집합이 포함되어 있음
+            3. 인터넷 게이트웨이
+                - VPC의 인스턴스와 인터넷 간에 통신할 수 있게 해주는 역할
+            4. 엔드포인트
+                - 엔드포인트를 통해 VPN 같은 서비스를 필요로 하지 않음
+                - PrivateLink를 지원하는 AWS 서비스 및 VPC 엔드포인트 서비스에 비공개로 연결 가능
     5. VPN
     6. Elastic Load Balancing
 12. 미디어 서비스
