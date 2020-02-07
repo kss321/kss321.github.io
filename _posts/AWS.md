@@ -1,18 +1,20 @@
 1. AWSの概要と導入のメリット
-    1．サーバの仕組みと選ぶポイント
+    1. サーバの仕組みと選ぶポイント
         - 서버는 여러가지 의미
         - 웹서버는 http프로토콜을 사용하고 있어서 http서버라고 부름
         - 서버/클라이언트가 있음
         - 클라이언트 -> 리퀘스트 -> 서버
         - 클라이언트 <- 레스폰스 <- 서버
         - 
-    2．AWSの概要
+    2. AWSの概要
         - IT를 실현하기 위해 필요한 서비스 집약
         - 글로벌
             - 세계 각지에 리전이 있고, 여러개의 데이터센터 존재
             
+    
     3．AWSを導入するメリットについて
     
+
 2．AWSの基本を理解してコスト削減を検討する
     1．プラットフォーム、サービスについて
     2．クローバるな
@@ -21,30 +23,89 @@
     5. 스토리지
     6. 데이터베이스 
     
+```    
 * 출처 
-- AWS 설명서 https://docs.aws.amazon.com/index.html?nc2=h_ql_doc_do_v
+- AWS 설명서 : https://docs.aws.amazon.com/index.html?nc2=h_ql_doc_do_v
+- 생활코딩 AWS : https://opentutorials.org/course/608/3005
+```
 
 1. 컴퓨팅
     1. EC2
         1. 정의
+            
             - Amazon Elastic Compute Cloud
         2. 기능
-            - 인스턴스
+            1. 인스턴스
                 - 기본이 아닌 VPC에서 시작한 인스턴스에는 프라이빗 IPv4 주소가 있음
                   해당하는 서브넷의 퍼블릭 IP 주소 속성을 수정하지 않으면 퍼블릭 IPv4 주소는 없음
-                  
-                ![ex_screenshot](../img/default-vpc-diagram.png)  
+               ![ex_screenshot](../img/default-vpc-diagram.png)  
                
-            - AMI
-            - 
+            2. AMI
+                1. 개념
+                    - 인스턴스 시작시 필요 정보 제공
+                    - 1개 이상의 EBS 스냅샷이나, 인스턴스 저장 지원 AMI의 경우 인스턴스의 루트 볼륨에 대한 템플릿을 포함
+                    - AMI를 사용하여 인스턴스를 시작할 수 있는 AWS 계정을 제어하는 시작 권한
+                    - 시작될 때 인스턴스에 연결할 볼륨을 지정하는 블록 디바이스 매핑
+                    ![ex_screenshot](../img/ami_lifecycle.png)  
+                    - AMI는 구입, 공유, 판매가 가능
+                2. AMI 생성
+                    - https://docs.aws.amazon.com/ko_kr/toolkit-for-visual-studio/latest/user-guide/tkv-create-ami-from-instance.html
+            3. EBS
+                - Elastic Block Store
+                - 일종의 하드디스크
+                - 사용한만큼 과금되는 종량제
+                - 내부적으로 데이터를 실시간 복제하고 있기 때문에 데이터를 잃어버릴 확률이 낮음
+                - 스냅샷 기능을 제공하여 현재 상태 그대로 보존 가능
+                - 인스턴스를 제거해도 EBS는 독립적이기 때문에 데이터 유지됨
+                - Volume : EBS로 생성한 디스크 하나하나를 볼륨이라고 부름
+                - EC2 인스턴스에 볼륨을 붙이고 인식하는 방법 링크 https://opentutorials.org/course/608/3005
+      
 2. 스토리지
     1. S3
+        1. 개념
+            - 인터넷용 스토리지 서비스
+            - 웹을 통해 언제 어디서나 원하는 양의 데이터를 저장하고 검색 가능  
+        2. 버킷
+                버킷은 객체의 컨테이너
+                각 버킷에 대해 액세스 권한 제어 가능
+                S3는 데이터를 버킷 내에 객체로 저장함 -> 즉 저장할 파일을 버킷에 업로드 해야함
+                객체는 파일과 해당 파일을 설명하는 메타데이터(선택)으로 구성됨
+                버킷의 지리적 리전 선택 가능
+        
     2. S3 Glacier
+        1. 개념
+            - 자주 사용되지 않는 데이터 즉, 콜드 데이터에 최적화된 스토리지 서비스
+            - 매우 저렴한 가격에 데이터 보관, 백업을 보안 기능과 함께 제공하는 스토리지 서비스
+            - 장기간 효율적인 비용으로 저장 가능
+        2. 데이터 모델
+            1. 볼트
+                - 아카이브 보관용 컨테이너
+            2. 아카이브
+                S3 Glacier의 기본 스토리지 단위  
+                사진, 동영상, 문서 등 모든 데이터 가능  
+                각 아카이브는 고유 ID를 가짐(리전에서 고유)  
+                
+    
 3. 데이터베이스
     1. RDS
+        1. 개념
+            - Amazon Relational Database Service
+            - AWS 클라우드에서 관계형 데이터베이스를 더 쉽게 설치, 운영, 확장할 수 있는 웹서비스
+            - MySQL, MariaDB, PostgreSQL, Oracle 및 Microsoft SQL Server 사용가능
+        2. DB 인스턴스
+            - RDS의 기본 빌딩 블록
+            - AWS 클라우드에 있는 격리된 데이터베이스 환경
+            - 사용자가 만든 여러 개의 데이터베이스가 포함될 수 있음
+            - DB엔진을 실행
     2. ElastiCache
+        1. 개념
+            - 클라우드에서 분산된 인 메모리 데이터 스토어 또는 캐시 환경을 손쉽게 설정, 관리 및 확장할 수 있는 웹 서비스
+            - Redis와 Memcached 지원
+            - ElastiCache 이해
+            ![ex_screenshot](../img/ElastiCache-Caching.png)     
 4. 개발자도구
     1. Cloud9
+    
 5. 보안 자격 증명 및 규정 준수
     1. WAF
     2. IAM
@@ -61,7 +122,7 @@
             - 무료 사용
         3. IAM 액세스
             - 
-            
+    
 6. 암호화 및 PKI
 7. 머신러닝
 8. 관리 및 거버넌스
@@ -97,6 +158,44 @@
 13. 최종 사용자 컴퓨팅
 14. 분석
     1. Elasticsearch Service
+        1. 개념
+            - AWS에서 ElasticSearch 클러스터를 쉽게 배포, 운영, 조정 할 수 있는 관리형 서비스
+            - Amazon ES를 사용하면 Elasticsearch API에 바로 액세스해 기존 코드 및 애플리케이션을 서비스를 통해 원활하게 사용할 수 있음
+            - Amazon ES 도메인 = Elasticsearch 클러스터
+            - 도메인은 설정, 인스턴스 유형, 인스턴스 수, 스토리지 리소스를 지정한 설정
+        2. Elasticsearch란
+            - 로그 분석, 실시간 애플리케이션 모니터링, 클릭 스트림 분석 같은 사용 사례를 위한 오픈 소스 검색 및 분석 엔진
+            - 아파치 루씬 기반
+            - 자바 오픈소스 분산 검색 엔진
+            - 방대한 양의 데이터를 신속하게 거의 실시간으로 저장, 검색, 분석 가능
+            - 관계형 데이터 베이스와의 비교
+                DataBase = Index
+                Table = Type
+                Column = Field
+                Row = Document    
+            - 아키텍쳐
+                ![ex_screenshot](../img/Elasticsearch1.png)    
+                - Cluster
+                    - 엘라스틱서치에서 가장 큰 시스템 단위
+                    - 최소 하나 이상의 노드로 이루어진 노드들의 집합
+                    - 서로 다른 클러스터는 데이터 교환, 접근 못함 -> 독립적 구조
+                    - 여러대의 서버가 하나의 클러스터를 구성할 수도 있고, 한 서버에 여러개의 클러스터가 존재할 수도 있음
+                - Node
+                    - 엘라스틱서치를 구성하는 하나의 단위 프로세스
+                    - Master-eligible, Data, Ingest, Tribe 
+                - Index
+                    - 
+                - Shard
+                    - 데이터를 분산해서 저장하는 방법
+                - Replica
+                    - 샤드들을 복제하는 것
+                    - 레플리카는 서로 다른 노드에 존재할 것을 권장함
+                    
+
+```
+Elasticsearch https://victorydntmd.tistory.com/308
+```
+
 15. 애플리케이션 통합
 16. 비즈니스 애플리케이션
 17. Satellite
