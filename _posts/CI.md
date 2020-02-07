@@ -23,16 +23,17 @@
         - release
         - deploy                
             - 빌드되어 실행가능한 결과물을 컨테이너에서 인식가능한 곳에 배치하는 것
-            
+    
 2. SCM
     - 소스코드 형상관리 시스템
     - 소스코드의 개정과 백업 절차를 자동화하여 오류 수정 과정을 도와줌
     - Git, SVN, Mercurial
-    - Git 호스팅 서비스
-        - GitHub
-        - GitLab
-        - Bitbucket
-            
+    1. GIT
+        1. Git 호스팅 서비스
+            - GitHub
+            - GitLab
+            - Bitbucket
+    
 3. Build Tool
     - 컴파일, 테스트, 정적분석 등을 실시해 동작 가능한 소프트웨어를 생성
     - ANT, Maven, Gradle 
@@ -41,36 +42,83 @@
     - 빌드 프로세스를 관리하는 서버
     - Jenkins, Hudson, CruiseControl.NET, TeamCity
     - Jenkins가 가장 많이 사용됨
-    - Jenkins
-    
+    1. Jenkins
+        - 빌드, 테스트, 배포 등의 지속적인 통합을 자동화해주는 툴
+        1. 작동 방식
+            - 개발자들이 깃에 코드를 공유
+            - 젠킨스가 깃의 코드를 가져와서 오류를 체크
+            - 의존 관계에 있는 라이브러리들을 다운 받음
+            - 테스트 코드가 있으면 테스트 코드를 실행
+            - 테스트에 성공할 경우, 빌드를 통해 실서버에 배포
+        2. 주의
+            - 젠킨스가 빌드, 테스트, 배포를 직접 실행하는 것이 아니라, 단지 실행시키는 역할을 하는 것
+               즉, workflow를 제어하는 것이지, 소스를 직접 읽고 실행하는 것이 아님
+        > 출처 
+        > https://victorydntmd.tistory.com/229
+
+
 5. 웹서버
     1. Apache
-        - 패키지 다운로드
-        - 패키지 인스톨
-        - 서비스 개시
-        - 인스턴스 기동시 자동기동 설정
-        * G1Apache OpenSSL Install
-            - Amazon Apache 2.4へSSL自己証明書を発行する手順
-            - 秘密鍵（Private Key）の作成
-            - 公開鍵（CSR）の作成
-            - サーバー証明書（CRT）の作成
-            - httpd設定ファイルの編集
-            - 設定変更の反映
+        1. 개념
+        
+        2. 설치 메뉴얼
+            - 패키지 다운로드
+            - 패키지 인스톨
+            - 서비스 개시
+            - 인스턴스 기동시 자동기동 설정
+            * G1Apache OpenSSL Install
+                - Amazon Apache 2.4へSSL自己証明書を発行する手順
+                - 秘密鍵（Private Key）の作成
+                - 公開鍵（CSR）の作成
+                - サーバー証明書（CRT）の作成
+                - httpd設定ファイルの編集
+                - 設定変更の反映
 6. WAS
     1. Tomcat
-        - 인스톨 모듈 준비
-        - 모듈의 전개
-        - 인스턴스 기동시 자동기동설정(젠킨스의 경우)
-        - 권한 설정
-        - chkconfig 설정
-        - Tomcat Log Rotate
+        1. 개념
+        2. 폴더 구조
+            - bin : Tomcat 바이너리와 시작 스크립트
+            - conf : webapps 에 적용하는 전역 설정. 설치시 다음을 기본으로 제공
+                - 정책파일(Policy File) : catalina.policy
+                - 등록정보파일(Properties File) : catalina.properties, logging.properties
+                - 구성파일 (Configuration XML File)
+                    - server.xml (Tomcat 주 설정 파일)
+                    - web.xml (웹 어플리케이션 배포 descriptors)
+                    - context.xml (global Tomcat-specific configuration)
+                    - tomcat-users.xml (인증 및 접근제어를 위한 유저/패스워드/권한 데이터베이스
+            - lib : tomcat에서 사용하는 jar 파일 모음
+            - log
+                - 엔진 로그 : Catalina.{yyyy-mm-dd}.log
+                - 호스트 로그 : localhost.{yyyy-mm-dd}.log
+                - 그외 어플리케이션 로그 : manger and host-manager , Accescc log
+            - webapps : 기본디렉토리 (localhost)
+            - work : 컴파일된 파일
+            - temp : 톰캣 실행되는 동안 임시 파일 위치
+            ![ex_screenshot](../img/tomcatDirectoryStructure.png)
+            
+        2. 설치 메뉴얼
+            - 인스톨 모듈 준비
+            - 모듈의 전개
+            - 인스턴스 기동시 자동기동설정(젠킨스의 경우)
+            - 권한 설정
+            - chkconfig 설정
+            - Tomcat Log Rotate
+    > 출처
+    > Tomcat https://cassandra.tistory.com/4
     
 7. Docker
     - 리눅스의 응용프로그램들을 소프트웨어 컨테이너 안에 배치시키는 일을 자동화하는 오픈소스 프로젝트
     
 8. 라이브러리 관리
-    - Nexus
-
+    1. Nexus
+        1. 사용이유
+            프로젝트에서 공통적으로 사용되는 라이브러리들이 존재함
+            개발자 개인이 이 라이브러리들을 다운받고 관리하려면 시간이 오래걸리고 불편함
+            따라서 라이브러리들을 공통으로 관리하기 위한것이 넥서스
+            꼭 사용할 필요는 없지만 라이브러리를 각자 받으면 시간이 오래 걸리기 때문에 팀단위 작업에서는 넥서스를 운영하는 것이 나음
+            한명만 라이브러리를 받아놓으면 다른 사람들은 훨씬 빠른 속도로 받을 수 있음
+            또한 넥서스를 이용하면 외부 넥서스 레포지토리에 없는 사내 유틸 라이브러리 등을 등록해서 쓸 수 있음
+            
 9. SonarQube
 
 *출처

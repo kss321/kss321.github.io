@@ -3,7 +3,7 @@
 1. 인프라
     - 어플리케이션이 움직이도록 하는 기반
     - 스펙과 가격에 따라 성능이 달라짐
- 
+
 2. AWS
     1. Route53
         - DNS 도메인 네이밍 서비스
@@ -25,7 +25,7 @@
         - AWS의 이메일 서비스
         - SES를 이용하면 따로 이메일 서버를 세울 필요가 없음
         - 간단하여 이용 용이
-        
+    
 3. VPC        
     1. Amazon Virtual Private Cloud
         - AWS 클라우드에서 논리적으로 격리된 공간을 프로비저닝하여 고객이 정의하는 가상 네트워크에서 AWS 리소스를 시작할 수 있음
@@ -79,7 +79,7 @@
             - Application Load Balancer
             - EC2 인스턴스 같은 여러 대상에 수신 어플리케이션 트래픽을 분산시킴
             - 어플리케이션의 가용성이 향상됨        
-            
+    
 4. Redis
     1. 개념
         - Remote Dictionary Server
@@ -99,7 +99,7 @@
         5. 대기열
         6. 채팅 및 메시징
             - PUB/SUB 표준 지원
-            
+        
     3. 사용가능한 데이터형
         String
         Lists
@@ -129,7 +129,7 @@
 - https://www.44bits.io/ko/post/understanding_aws_vpc
 - ALB : https://docs.aws.amazon.com/ko_kr/elasticloadbalancing/latest/application/introduction.html
 - ALB : https://docs.aws.amazon.com/ko_kr/elasticloadbalancing/latest/application/application-load-balancers.html
-    
+  
 -----------------------------------------------------------------------------------------------------------------------
 ###### 접속경로
 
@@ -155,6 +155,7 @@
     - FO(Web), FO(API), BO(Web, APP), Batch서버는 모두 각각의 웹서버(Apache), AP서버(Tomcat)을 가짐
     ![ex_screenshot](../img/https___qiita-image-store.s3.amazonaws.com_0_186009_d9f5fb6d-1b6f-26d8-4c80-e4ee88f7a54c.png)
     
+    ![ex_screenshot](../img/web-service-architecture.png)
 2. Web 서버
     1. 역활
         - 클라이언트에서 요청(HTTP Request)이 올때 가장 앞에서 요청에 대한 처리를 함
@@ -178,7 +179,8 @@
 
 4. mod_jk
     1. 정의
-        - AJP(Apache JServ Protocol, 아파치가 웹서버와 톰캣과 같은 외부서비스를 연동하기 위해 정한 규약)을 사용하여 Tomcat서블릿 컨테이너를 Apache, iPlant, Sun ONE, IIS와 같은 웹서버와 연결하는데 사용되는 Apache 모듈
+        - AJP(Apache JServ Protocol, 아파치가 웹서버와 톰캣과 같은 외부서비스를 연동하기 위해 정한 규약)을 사용하여 
+        Tomcat서블릿 컨테이너를 Apache, iPlant, Sun ONE, IIS와 같은 웹서버와 연결하는데 사용되는 Apache 모듈
         - 아파치와 톰캣을 연결하는 방식 중 가장 많이 사용되기 때문에 관련 자료가 많음
             - 아파치와 톰캣을 연결하는 방식들
                 - mod_jk
@@ -257,7 +259,7 @@
         - release
         - deploy                
             - 빌드되어 실행가능한 결과물을 컨테이너에서 인식가능한 곳에 배치하는 것
-            
+        
     2. CI서버
         - 빌드 프로세스를 관리하는 서버
         - Jenkins, Hudson, CruiseControl.NET, TeamCity
@@ -272,7 +274,7 @@
             - GitHub
             - GitLab
             - Bitbucket
-                
+        
     4. Build Tool
         - 컴파일, 테스트, 정적분석 등을 실시해 동작 가능한 소프트웨어를 생성
         - ANT, Maven, Gradle 
@@ -310,7 +312,8 @@
             - 종류
                 - redhat계열 -> 페도라, 센토스
                 - 데비안 계열 -> 우분투(Ubuntu)
-  
+          
                 
+
 *출처
 - https://coding-factory.tistory.com/318

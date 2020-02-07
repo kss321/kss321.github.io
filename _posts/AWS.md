@@ -10,7 +10,6 @@
         - IT를 실현하기 위해 필요한 서비스 집약
         - 글로벌
             - 세계 각지에 리전이 있고, 여러개의 데이터센터 존재
-            
     
     3．AWSを導入するメリットについて
     
@@ -32,7 +31,6 @@
 1. 컴퓨팅
     1. EC2
         1. 정의
-            
             - Amazon Elastic Compute Cloud
         2. 기능
             1. 인스턴스
@@ -103,6 +101,7 @@
             - Redis와 Memcached 지원
             - ElastiCache 이해
             ![ex_screenshot](../img/ElastiCache-Caching.png)     
+            
 4. 개발자도구
     1. Cloud9
     
