@@ -56,7 +56,6 @@
         > 출처 
         > https://victorydntmd.tistory.com/229
 
-
 5. 웹서버
     1. Apache
         1. 개념
@@ -128,7 +127,13 @@
             - hosted
                 
 9. SonarQube
-
+    1. SonarQube란
+        소나큐브는 20개 이상의 프로그래밍 언어에서 버그, 코드 스멜, 보안 취약점을 발견할 목적으로 
+        정적 코드 분석(실제 실행 없이 컴퓨터 소프트웨어를 분석하는 것)으로 
+        자동 리뷰를 수행하기 위한 지속적인 코드 품질 검사용 오픈 소스 플랫폼
+        ![ex_screenshot](../img/sonarqube_concept.png)
+        > https://www.popit.kr/%EB%82%B4%EC%BD%94%EB%93%9C%EB%A5%BC-%EC%9E%90%EB%8F%99%EC%9C%BC%EB%A1%9C-%EB%A6%AC%EB%B7%B0%ED%95%B4%EC%A4%80%EB%8B%A4%EB%A9%B4-by-sonarqube/
+        
 *출처
 - 도커 https://subicura.com/2017/01/19/docker-guide-for-beginners-1.html
 - https://tenlie10.tistory.com/75
