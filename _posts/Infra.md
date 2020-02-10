@@ -82,10 +82,15 @@
     
 4. Redis
     1. 개념
-        - Remote Dictionary Server
-        - "키-값" 구조의 비정형 데이터를 저장하고 관리하기 위한 비관계형 데이터베이스 관리 시스템
+        - REmote Dictionary Server
+        - "Key-Value" 구조의 비정형 데이터를 저장하고 관리하기 위한 비관계형 데이터베이스 관리 시스템
         - 디스크가 아닌 메모리 기반의 데이터 저장소
-        - 속도가 빠르고 사용이 간편
+        - 모든 데이터가 메모리에 저장됨
+            -> read/write 속도가 빠름
+            -> 물리적인 메모리 크기를 넘어설 수 없음
+        - 데이터 액세스는 메모리에서 일어나지만, 서버가 멈추는 상황에 대비하여 데이터를 디스크에도 보존
+        - "Key-Value" 구조 -> PUT/GET 기능 지원
+        
     2. 사용 사례 
         1. Caching(Data)
             - PC에서 메모리의 개념
@@ -94,18 +99,129 @@
         2. Session
             - 예를들어 프론트 웹서버가 여러대일 경우 한곳에만 세션 정보를 저장하면 한쪽이 멈춘경우, 세션의 지속이 불가능한데, 
             레디스 세션에 저장해 놓으면 해당 세션에 대한 정보를 언제나 유지하기 때문에 세션지속이 가능하다. 
-        3. 실시간 순위표
-        4. 속도 제한
-        5. 대기열
-        6. 채팅 및 메시징
+                -> 즉, 복수 서버 환경에서 세션 정보 공유 가능
+        3. 채팅 및 메시징
             - PUB/SUB 표준 지원
         
     3. 사용가능한 데이터형
-        String
-        Lists
-        Sets
-        Sorted sets
-        Hashs                
+        - String뿐만 아니라, Lists, Sets, Hashes등의 집합형 데이터도 지원
+        - 저장된 데이터에 대해 연산 등 추가 작업 가능
+        ![ex_screenshot](../img/reids1.png)
+        1. String
+            일반적인 문자열
+            최대 512mbyte까지 지원
+        2. Lists
+            String들의 집합
+            저장되는 데이터형태는 set과 유사하지만 방향이 있음
+            List 앞과 뒤에서 PUSH/POP 연산을 이용해서 데이터를 넣거나 뺄수 있음
+            인덱스값을 이용해서 지정된 위치에 값을 넣을 수 있음
+        3. Sets
+            String의 집합
+            여러개의 값을 하나의 value에 넣을 수 있음
+            set간의 연산을 지원(합집합, 교집합, Difference)
+        4. Sorted sets
+            set에 score라는 필드가 추가된 데이터형
+            score는 가중치를 의미
+            오름차순으로 내부정렬됨
+        5. Hashs                
+            value내에 field/string이 쌍으로 이루어진 테이블을 저장하는 데이터 구조
+    
+    4. 데이터 보존
+        - 레디스는 메모리에 저장된 데이터에 액세스해서 빠른 속도를 낼 수 있지만, 
+            서버 shutdown에 대비하여 disk에도 데이터를 저장해 놓음
+            shutdown시에 디스크의 데이터를 읽어서 메모리에 loading하기 때문에 데이터 유실을 방지함
+        - 데이터 보존은 disk에 데이터를 저장하는 방식
+        1. snapshotting방식 
+            - 순간적으로 메모리에 있는 내용 전체를 디스크에 옮겨 담는 방식
+            1. 장단점
+                - 장점 : 메모리의 스냅샷을 그대로 저장하기 때문에 서버 재기동시 스냅샷만 로드하면 되므로 재기동 시간이 빠름
+                - 단점 : 스냅샷을 추출하는 시간이 오래걸림
+                        스냅샷 추출 후 서버가 내려가면 스냅샷 이후의 데이터는 유실됨 (백업 시점의 데이터까지만 유지되니까)
+            2. 방식
+                1. SAVE
+                    레디스의 모든 동작을 정지시키고 그때의 스냅샷을 디스크에 저장
+                2. BGSAVE    
+                    별도의 프로세스를 띄운 후, 명령어 수행 당시의 메모리 스냅샷을 디스크에 저장
+                    따라서 저장 순간에도 레디스가 정지되지 않고 정상 작동됨
+        2. AOF방식
+            - 레디스의 모든 read/write 연산을 로그파일에 기록하는 방식
+            서버가 재시작될때 기록된 read/write 연산을 순차적으로 재실행하여 데이터를 복구함
+            따라서 특정 시점이 아니라 항상 현재 시점까지이 로그를 기록 가능 
+            1. 장단점
+                - 장점 : 로그 파일에 대해서만 append하기 때문에 속도가 빠르고 어느 시점에서 서버가 다운 되더라도 데이터 유실이 발생하지 않음
+                - 단점 : 모든 read/write에 대해서 기록을 남기기 때문에 로그 데이터양이 방대함
+                        복구 시 저장된 read/write 연산을 다시 실행하기 때문에 재기동 속도가 느림
+        3. 권장
+            - 결과적으로 두 방법 다 장단점이 있기 때문에 둘을 혼용해서 사용하는 것을 권장함
+            - 주기적으로 스냅샷으로 백업하고, 다음 스냅샷까지의 저장을 AOF방식으로 수행
+            
+    5. Replication
+        1. Master/Slave Replication
+            ![ex_screenshot](../img/redis2.png)
+            - master 노드의 내용을 slave노드에 복제하는 것
+            - 1개의 master 노드는 N개의 slave 노드를 가질 수 있음
+            - slave 노드도 자신에 대한 slave 노드를 가질 수 있음
+            - master/slave 간의 복제는 Non-blocking 상태로 이루어짐 -> 데이터 불일치 가능성 있음
+        2. Query Off Loading을 통한 성능 향상
+            - Query Off Loading
+              master node = write only
+              slave node = read only
+        3. sharding
+            - 여러대의 레디스 서버를 구성한 후, 데이터를 일정 구역별로 나누어서 저장하는 것     
+            ex) key 번호 별로 구역을 나누어 저장
+            ![ex_screenshot](../img/redis3.png)
+    
+    6. Expiration
+        -  레디스는 데이터에 생명주기를 정해서 일정 시간 경과시 자동 삭제 가능
+        1. 방식
+            - Active 방식 : 클라이언트가 Expire된 데이터에 접근하려고 하면 그 때 지우는 것
+            - Passive 방식 : 주기적으로 키들을 랜덤으로 100개만 스캔해서 지우는 것
+            - Active의 경우 접근한 데이터만, Passive의 경우 랜덤으로 스캔된 데이터만 지우기 때문에
+            전체를 스캔하는 것이 아니라서 expired 되었으나 지워지지 않는 데이터가 존재 가능    
+            
+    7. SpringBoot에 Redis CacheServer 설정
+        - 의존성 라이브러리 추가
+        - Redis 서버 정보 설정
+        - 스프링부트에 캐시 사용 여부 알리기
+        - 사용할 서비스 메소드에 어노테이션 추가
+            - 캐시 추가 : 
+                @Cacheable 캐시가 있으면 캐시 정보 가져오고, 없으면 등록
+                @CachePut  무조건 캐시에 등록
+            - 캐시 삭제 : @CacheEvict
+            
+    8. Redis 명령어
+        - set : 데이터 저장
+        - get : 데이터 검색
+        - rename : key값 변경
+        - keys : 저장된 모든 key 검색 -> 부하가 심해서 사용 X
+        - randomkey : 저장된 key 중에 하나의 랜덤한 key 검색
+        - exists : 검색하려는 key 존재여부 확인
+        - strlen : 검색하려는 key의 value 확인
+        - flushall : 저장되어 있는 모든 key 삭제
+        - setex : 데이터를 입력할때  일정 시간이 지나 자동으로 삭제하는 명령
+        - mget/mset : 여러개의 키/value를 검색, 저장할 때
+        - append : 현재 value 값에 value를 덧붙여서 추가할 때
+        - incr/decr : 특정 key 값의 value 값에 대한 증가 또는 감소 값을 가져올 때
+        - save : 현재 입력되어 있는 key/value를 파일로 저장할 때
+        
+    9. Redis 프로그램
+        - redis-server : 레디스 서버
+        - redis-cli : 레디스 CLI 인터페이스
+        - redis-sentinel : 레디스 모니터링 툴
+        - redis-benchmark : 레디스의 성능 테스트를 위한 벤치마킹 툴
+        - redis-check-aof : 데이터 파일 손상 확인
+        
+    10. Sentinel
+        레디스는 마스터와 복제로 구성되어서, 마스터가 다운되면 관리자가 이를 감지해서 복제를 마스터로 올림
+        센티널은 마스터와 복제를 감시하고 있다가 마스터가 다운되면 이를 감지해서 관리자의 개입없이 자동으로 복제를 마스터로 올려줌
+            
+> Reference
+> Redis : https://bcho.tistory.com/654        
+> SpringBoot에 Redis CacheServer 설정 : https://yonguri.tistory.com/82
+> Redis 프로그램 : https://nachwon.github.io/redis/
+> Redis 명령어 : https://sqlmvp.tistory.com/1313
+> Sentinel : http://redisgate.jp/redis/sentinel/sentinel.php
+
 
 5. ElasticSearch
     1. 검색엔진
@@ -317,3 +433,37 @@
 
 *출처
 - https://coding-factory.tistory.com/318
+
+-----------------------------------------------------------------------------------------------------------------------
+###### 기타
+
+1. Caching
+    1. Cache란
+        - 한번 읽은 데이터를 임시로 저장하고 필요에 따라 전송, 갱신, 삭제하는 기술
+        - 서버의 메모리에 저장하는 경우가 많음 -> 디스크에 저장하는 경우보다 훨씬 빠름
+        - 메모리에 저장하기 때문에 서버가 다운되면 사라지는 휘발성을 지님
+        - 임시로 보관하여 빠르게 읽을 데이터에 적합
+    2. 사용 목적
+        - 서버간 불필요한 트래픽 감소시키기
+        - WAS서버 부하 감소시키기
+        - 빠른 처리로 성능 확보
+    3. Caching 대상 정보
+        - 단순한함
+        - 반복적임
+        - 정보의 변경이 빈번하지 않음
+        - 단위처리 시간이 오래걸림
+        - 정보의 최신화가 실시간으로 이루어지지 않아도 됨
+    4. Cache 사용시 주의점
+        - 캐싱할 정보의 선택
+        - 캐싱할 정보의 유효기간
+        - 캐싱한 정보의 갱신시점
+    5. SpringBoot가 공식지원하는 ThirdParty 캐싱 라이브러리
+        - Redis
+        - Caffeine
+        - EhCache
+        - Hazelcate
+        - Infinispan
+    
+        
+> Reference
+> Redis CacheServer설정 https://yonguri.tistory.com/82

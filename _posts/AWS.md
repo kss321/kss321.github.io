@@ -101,6 +101,8 @@
             - Redis와 Memcached 지원
             - ElastiCache 이해
             ![ex_screenshot](../img/ElastiCache-Caching.png)     
+            > Reference
+            > https://aws.amazon.com/ko/elasticache/redis/
             
 4. 개발자도구
     1. Cloud9
