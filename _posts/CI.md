@@ -53,13 +53,18 @@
         2. 주의
             - 젠킨스가 빌드, 테스트, 배포를 직접 실행하는 것이 아니라, 단지 실행시키는 역할을 하는 것
                즉, workflow를 제어하는 것이지, 소스를 직접 읽고 실행하는 것이 아님
-        > 출처 
-        > https://victorydntmd.tistory.com/229
+> 출처 
+> https://victorydntmd.tistory.com/229
+
 
 5. 웹서버
     1. Apache
         1. 개념
-        
+            웹서버의 한 종류
+            아파치 소프트웨어 재단에서 만드는 웹서버 프로그램
+            유닉스 기반
+            ![ex_screenshot](../img/LSBAWS_HTTP_request_response.png)
+            특정 주소 혹은 검색을 했을때, HTTP 프로토콜을 이요하여 서버에 리퀘스트를 하면 그에 맞는 리스폰스를 반환하여 브라우저에 출력시키는 역할
         2. 설치 메뉴얼
             - 패키지 다운로드
             - 패키지 인스톨
@@ -72,9 +77,14 @@
                 - サーバー証明書（CRT）の作成
                 - httpd設定ファイルの編集
                 - 設定変更の反映
+> Reference
+> https://thesauro.tistory.com/6
+
+
 6. WAS
     1. Tomcat
         1. 개념
+           
         2. 폴더 구조
             - bin : Tomcat 바이너리와 시작 스크립트
             - conf : webapps 에 적용하는 전역 설정. 설치시 다음을 기본으로 제공
@@ -95,16 +105,17 @@
             - temp : 톰캣 실행되는 동안 임시 파일 위치
             ![ex_screenshot](../img/tomcatDirectoryStructure.png)
             
-        2. 설치 메뉴얼
+        3. 설치 메뉴얼
             - 인스톨 모듈 준비
             - 모듈의 전개
             - 인스턴스 기동시 자동기동설정(젠킨스의 경우)
             - 권한 설정
             - chkconfig 설정
             - Tomcat Log Rotate
-    > 출처
-    > Tomcat https://cassandra.tistory.com/4
-    
+> 출처
+> Tomcat https://cassandra.tistory.com/4
+
+
 7. Docker
     - 리눅스의 응용프로그램들을 소프트웨어 컨테이너 안에 배치시키는 일을 자동화하는 오픈소스 프로젝트
     
@@ -125,15 +136,17 @@
                 - 여러개의 repository를 묶어서 관리
             - proxy
             - hosted
-                
+        
+    
 9. SonarQube
     1. SonarQube란
         소나큐브는 20개 이상의 프로그래밍 언어에서 버그, 코드 스멜, 보안 취약점을 발견할 목적으로 
         정적 코드 분석(실제 실행 없이 컴퓨터 소프트웨어를 분석하는 것)으로 
         자동 리뷰를 수행하기 위한 지속적인 코드 품질 검사용 오픈 소스 플랫폼
         ![ex_screenshot](../img/sonarqube_concept.png)
-        > https://www.popit.kr/%EB%82%B4%EC%BD%94%EB%93%9C%EB%A5%BC-%EC%9E%90%EB%8F%99%EC%9C%BC%EB%A1%9C-%EB%A6%AC%EB%B7%B0%ED%95%B4%EC%A4%80%EB%8B%A4%EB%A9%B4-by-sonarqube/
-        
-*출처
-- 도커 https://subicura.com/2017/01/19/docker-guide-for-beginners-1.html
-- https://tenlie10.tistory.com/75
+
+> https://www.popit.kr/%EB%82%B4%EC%BD%94%EB%93%9C%EB%A5%BC-%EC%9E%90%EB%8F%99%EC%9C%BC%EB%A1%9C-%EB%A6%AC%EB%B7%B0%ED%95%B4%EC%A4%80%EB%8B%A4%EB%A9%B4-by-sonarqube/
+
+> 출처
+> 도커 https://subicura.com/2017/01/19/docker-guide-for-beginners-1.html
+> https://tenlie10.tistory.com/75

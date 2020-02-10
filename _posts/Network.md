@@ -23,6 +23,7 @@
     3. 터미널 에뮬레이터 클라이언트
        - Xshell
        - PuTTY
+       
 2. SSL
     1. Secure Sockets Layer
         - 웹서버 인증이나 서버 인증
@@ -48,6 +49,35 @@
         - 128비트 체계로 구성
         - 유니캐스트·애니캐스트·멀티캐스트 형태의 유형으로 할당하기 때문에 할당된 주소의 낭비 요인이 사라지고 더욱 간단하게 주소를 자동 설정 가능
 
-* 출처 
-- https://jwprogramming.tistory.com/28
+6. HTTP / HTTPS
+    1. HTTP
+        1. 개념
+            - Hyper Text Transfer Protocol
+            - 인터넷에서 데이터를 주고받을 수 있는 프로토콜(규칙)
+            - Request/Response로 이루어짐
+        2. Response Status Code
+            - 1XX (조건부 응답) : 요청을 받았으며 작업을 계속한다.
+            - 2XX (성공) : 클라이언트가 요청한 동작을 수신하여 이해했고 승낙했으며 성공적으로 처리했음을 가리킨다.
+            - 3XX (리다이렉션 완료) : 클라이언트는 요청을 마치기 위해 추가 동작을 취해야 한다.
+            - 4XX (요청 오류) : 클라이언트에 오류가 있음을 나타낸다.
+            - 5XX (서버 오류) : 서버가 유효한 요청을 명백하게 수행하지 못했음을 나타낸다.
+        3. version
+            1. HTTP1.1 
+                날렸던 요청에 대해 응답을 받아야만 다음 요청 가능
+                문자열로 데이터 전송
+            2. HTTP2.0 
+                Multiplexing 방식 도입으로 동시에 여러 리소스 받을 수 있음
+                바이너리로 인코딩 압축해서 전송
+                보안이 강화되었고, 속도가 빠름
+    2. HTTPS
+        1. 개념
+            - HTTP의 보안 취약점을 보완한 프로토콜
+            - HTTP + Secure Socket
+            - 서버와 클라이언트 사이의 모든 통신 내용이 암호화 됨
+            
+            
+> 출처 
+> https://jwprogramming.tistory.com/28
+> Response Status Code : https://velog.io/@surim014/HTTP%EB%9E%80-%EB%AC%B4%EC%97%87%EC%9D%B8%EA%B0%80
+> Response Status Code : https://hees-dev.tistory.com/44?category=864258
           
