@@ -103,3 +103,31 @@
 	2.	自分自身のタスクが明確になっていること
 	3.	メンバーの役割りが明確になっていること
 	4.	開発したソースの管理方法が明確になっていること
+
+
+
+
+-----------------------------------------------------------------------------------------------------------------------
+###### 仕様
+
+1. 本番環境基準
+    - FO、API、検索はAutoScaling使う
+    - BO、BatchはAMIだけ準備
+    - StoreOfficeは未定
+    - IndexerはベッドのインスタンスでPublicSubnetに
+    - 監視とDeepSecurityは未定
+    - RedisはAWSのElastiCache仕様
+    - メールサーバはAWSのSES
+
+2. RegionとAZ情報
+    |地域|ソウル|東京|
+    |:---:|:---:|:---:|
+    |Region名|ap-northeast-2|ap-northeast-1|
+    |AZ|ap-northease-2a|ap-northeast-1a|
+    |AZ|ap-northease-2b|ap-northeast-1c|
+    |AZ|ap-northease-2c|ap-northeast-1d|
+
+
+
+
+

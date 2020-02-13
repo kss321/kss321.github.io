@@ -21,12 +21,12 @@
     4. 컴퓨팅
     5. 스토리지
     6. 데이터베이스 
+
     
-```    
-* 출처 
-- AWS 설명서 : https://docs.aws.amazon.com/index.html?nc2=h_ql_doc_do_v
-- 생활코딩 AWS : https://opentutorials.org/course/608/3005
-```
+> 출처 
+> AWS 설명서 : https://docs.aws.amazon.com/index.html?nc2=h_ql_doc_do_v
+> 생활코딩 AWS : https://opentutorials.org/course/608/3005
+
 
 1. 컴퓨팅
     1. EC2
@@ -162,6 +162,13 @@
 11. 네트워크 및 콘텐츠 전송
     1. API Gateway
     2. Cloud Front
+        1. 개념
+            - html, css, js, 이미지 파일과 같은 정적 및 동적 웹컨텐츠를 사용자에게 더 빨리 배포하도록 지원하는 서비스
+            - 사용자가 요청하면 지연시간이 가장 낮은 엣지 위치라고 하는 데이터센터로 라우팅 되서 컨텐츠 전송
+            - 콘텐츠가 이미 지연시간이 가장 낮은 엣지에 있는 경우 클라우드 프론트가 컨텐츠를 즉시 제공함
+            - 지연시간이 가장 낮은 엣지에 없는 경우 컨텐츠의 최종 버전에 대한 소스로 지정된 오리진에서 컨텐츠를 검색하여 제공
+            - 파일의 사본이 전 세계 여러 엣지 로케이션에 유지되므로 안정성 향상
+             
     3. Route 53
     4. VPC
         1. VPC 개념
