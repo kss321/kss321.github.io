@@ -227,12 +227,18 @@
     1. 검색엔진
         - 단어 검색에 최적화 되어 있음
         - SELECT문으로 데이터베이스에 직접 해당 단어를 구간별로 끊어서 검색할 경우, 속도도 느리고 검색 결과도 정확하지 않음
-        - 따라서 그 대안으로 제시된 것이 엘라스틱 서치
+        　따라서 그 대안으로 제시된 것이 엘라스틱 서치
         - 엘라스틱 서치는 검색어를 입력하면 해당 단어 혹은 문장에 해당하는 검색 결과를 내보내줌
         - 검색결과는 일련번호와 같은 키 정보로 상품이나, 전시 정보를 들고 있지는 않음
         - 엘라스틱서치가 내보낸 일련번호로 레디스 데이터에서 해당하는 상품을 찾아서 조회
-        - 만약 레디스에 일련번호에 해당하는 정보가 없다면 그때, 데이터베이스로 가서 조회
-
+        　만약 레디스에 일련번호에 해당하는 정보가 없다면 그때, 데이터베이스로 가서 조회
+        - 단독으로 사용되기도 하며 ELK(ElasticSearch / Logstash  / Kibana)스택으로 사용되기도 함
+            Logstash : 다양한 소스(DB, csv파일 등)의 로그 또는 트랜잭션 데이터를 수집, 집계, 파싱하여 ElasticSearch로 전달
+            ElasticSearch : Logstash로 부터 받은 데이터를 검색 및 집계하여 필요한 관심있는 정보를 획득
+            Kibana : ElasticSearch의 빠른 검색을 통해 데이터를 시각화
+    2. ElasticSearch가 빠른 이유
+        일반적으로 RDBMS는 index구조로 되어있음. 
+            
 6. Index
     - BO나 FO에서 INPUT 동작이 있을 경우, 데이터베이스의 데이터에 변화가 생김
     - 인덱스틑 이러한 데이터베이스의 변동을 감지해서 이 변화에 해당하는 부분만을 레디스와 엘라스틱 서치에 반영함
@@ -240,11 +246,12 @@
     
     
     
-* 출처
-- https://docs.aws.amazon.com/ko_kr/vpc/latest/userguide/what-is-amazon-vpc.html
-- https://www.44bits.io/ko/post/understanding_aws_vpc
-- ALB : https://docs.aws.amazon.com/ko_kr/elasticloadbalancing/latest/application/introduction.html
-- ALB : https://docs.aws.amazon.com/ko_kr/elasticloadbalancing/latest/application/application-load-balancers.html
+> 출처
+> https://docs.aws.amazon.com/ko_kr/vpc/latest/userguide/what-is-amazon-vpc.html
+> https://www.44bits.io/ko/post/understanding_aws_vpc
+> ALB : https://docs.aws.amazon.com/ko_kr/elasticloadbalancing/latest/application/introduction.html
+> ALB : https://docs.aws.amazon.com/ko_kr/elasticloadbalancing/latest/application/application-load-balancers.html
+> ElasticSearch : https://victorydntmd.tistory.com/308
   
 -----------------------------------------------------------------------------------------------------------------------
 ###### 접속경로
