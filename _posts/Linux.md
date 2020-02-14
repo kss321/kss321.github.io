@@ -38,7 +38,23 @@
         - /app/nexus/nexus-3.20.1-01でログ確認
     - postfix(메일서버)
         - $ sudo yum install postfix
-            
+    
+    ＊AWS EC2のタイムゾン変更方法
+    
+    １。clockファイルを開いて、下記のように変更
+    $ sudo vim /etc/sysconfig/clock
+    # ZONE="UTC"
+    ZONE="Japan"
+    UTC=true
+    
+    ２。時間帯ファイルにシンボリックリンク
+    $ sudo ln -sf /usr/share/zoneinfo/Japan /etc/localtime
+    
+    ３。日本時間に表示されていることを確認
+    $ date
+    
+    ４。インスタンス再起動
+    $ sudo reboot
 3. Install
     1. RPM/YUM
         - RPM
