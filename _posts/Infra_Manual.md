@@ -16,7 +16,7 @@
                 - jdk install
                 - apache install
                 - date 시간대 설정 변경                
-            3. bluework
+            3. bw
                 - yum update
                 - hostname 변경
                 - jdk install
