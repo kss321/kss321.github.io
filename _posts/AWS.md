@@ -37,6 +37,7 @@
                 - 기본이 아닌 VPC에서 시작한 인스턴스에는 프라이빗 IPv4 주소가 있음
                   해당하는 서브넷의 퍼블릭 IP 주소 속성을 수정하지 않으면 퍼블릭 IPv4 주소는 없음
                ![ex_screenshot](../img/default-vpc-diagram.png)  
+               - 인스턴스의 기본 유저는 AMI에 의해서 결정됨 
                
             2. AMI
                 1. 개념
@@ -109,6 +110,10 @@
     
 5. 보안 자격 증명 및 규정 준수
     1. WAF
+        1. WAF란?
+            - Web Application Firewall
+            - CloudFront, API Gateway, LoadBalancer에 전달되는 HTTP(S)요청을 모니터링 할 수 있게 해주는 웹 어플리케이션 방화벽
+            - 억세스를 금지 해야하는 경우에 403코드로 응답
     2. IAM
         1. IAM이란?
             - Identity and Access Management

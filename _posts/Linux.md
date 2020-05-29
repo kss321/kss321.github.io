@@ -39,22 +39,19 @@
     - postfix(메일서버)
         - $ sudo yum install postfix
     
-    ＊AWS EC2のタイムゾン変更方法
-    
-    １。clockファイルを開いて、下記のように変更
-    $ sudo vim /etc/sysconfig/clock
-    # ZONE="UTC"
-    ZONE="Japan"
-    UTC=true
-    
-    ２。時間帯ファイルにシンボリックリンク
-    $ sudo ln -sf /usr/share/zoneinfo/Japan /etc/localtime
-    
-    ３。日本時間に表示されていることを確認
-    $ date
-    
-    ４。インスタンス再起動
-    $ sudo reboot
+    - AWS EC2のタイムゾン変更方法
+        1. clockファイルを開いて、下記のように変更
+            $ sudo vim /etc/sysconfig/clock
+            # ZONE="UTC"
+            ZONE="Japan"
+            UTC=true
+        2. 時間帯ファイルにシンボリックリンク
+            $ sudo ln -sf /usr/share/zoneinfo/Japan /etc/localtime
+        3. 日本時間に表示されていることを確認
+            $ date
+        4. インスタンス再起動
+            $ sudo reboot
+            
 3. Install
     1. RPM/YUM
         - RPM
@@ -70,7 +67,6 @@
             - rpm의 패키지 의존성 문제를 해결
             - 인터넷을 통해서 필요한 파일을 저장소에서 자동으로 모두 다운로드하여 설치하는 방식
             - 따라서, 외부 레포지토리 서버와 통신이 가능해야 함
-                
                 
     
 * 출처
