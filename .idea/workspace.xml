@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="9e24d097-b250-472e-ae93-478a8e26d3a5" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/_posts/JavaScript/JavaScript1.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_posts/JavaScript/node.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_posts/React/react.md" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/React/react.md" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1hlNAXXEZYTldHXeHE2iLKfkcRK" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1598519530218" />
+    <property name="last_opened_file_path" value="$USER_HOME$/react-app" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="9e24d097-b250-472e-ae93-478a8e26d3a5" name="Default Changelist" comment="" />
+      <created>1578316655484</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1578316655484</updated>
+    </task>
+    <task id="LOCAL-00001" summary="20200106Thymeleaf">
+      <created>1578317782916</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1578317782916</updated>
+    </task>
+    <task id="LOCAL-00002" summary="20200106Thymeleaf">
+      <created>1578320123561</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1578320123561</updated>
+    </task>
+    <task id="LOCAL-00003" summary="20200106Thymeleaf">
+      <created>1578320144814</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1578320144814</updated>
+    </task>
+    <task id="LOCAL-00004" summary="20200106Thymeleaf">
+      <created>1578320156970</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1578320156970</updated>
+    </task>
+    <task id="LOCAL-00005" summary="20200106Thymeleaf">
+      <created>1578320968563</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1578320968563</updated>
+    </task>
+    <task id="LOCAL-00006" summary="20200106Thymeleaf">
+      <created>1578902904762</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1578902904762</updated>
+    </task>
+    <task id="LOCAL-00007" summary="20200202">
+      <created>1580649080480</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1580649080480</updated>
+    </task>
+    <task id="LOCAL-00008" summary="20200202">
+      <created>1614256862188</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1614256862188</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
+    <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="20200106Thymeleaf" />
+    <MESSAGE value="20200202" />
+    <option name="LAST_COMMIT_MESSAGE" value="20200202" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="577" y="87" key="CommitChangelistDialog2" timestamp="1614256860290">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="577" y="87" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1614256860290" />
+    <state x="1220" y="278" key="FileChooserDialogImpl" timestamp="1608437519297">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="1220" y="278" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1608437519297" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1614256846275">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1614256846275" />
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>
