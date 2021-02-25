@@ -2,9 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9e24d097-b250-472e-ae93-478a8e26d3a5" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/_posts/JavaScript/JavaScript1.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_posts/JavaScript/node.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_posts/React/react.md" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/React/react.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_posts/2020-01-02-codeTest.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_posts/2020-01-02-third.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_posts/2020-01-06-markDown.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_posts/2020-01-06-thymeleaf.md" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/2020-01-06-thymeleaf.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_posts/2020-01-07-lambda.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_posts/2021-02-25-AWS.md" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/AWS.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
