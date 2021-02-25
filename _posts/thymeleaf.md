@@ -1,9 +1,3 @@
----
-title: "Thymeleaf"
-date: 2020-01-06
-categories: Thymeleaf
----
-
 1. Thymeleaf 정의
     - View Template Engine
     - 서버상에서 동작하지 않음
